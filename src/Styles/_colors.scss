@@ -1,0 +1,23 @@
+$colors-d: (
+  "background": #242424,
+  "text": rgba(255, 255, 255, 0.87),
+  "link": #646cff,
+  "hover": #535bf2,
+  "button-background": #1a1a1a,
+  "button-hover": #646cff,
+);
+
+$colors-l: (
+  "background": #ffffff,
+  "text": #213547,
+  "link": #646cff,
+  "hover": #747bff,
+  "button-background": #f9f9f9,
+  "button-hover": #646cff,
+);
+
+@mixin theme-colors($theme-map) {
+  @each $key, $value in $theme-map {
+    --#{$key}: #{$value};
+  }
+}

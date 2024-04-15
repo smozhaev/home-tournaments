@@ -21,7 +21,10 @@
       filter: drop-shadow(0 0 1em #646cff);
     }
   }
-
+  &__container {
+    display: flex;
+    flex-direction: row;
+  }
   h3 {
     margin: 0;
   }

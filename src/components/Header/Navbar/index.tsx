@@ -1,15 +1,16 @@
+import { NavLink } from "react-router-dom";
 import "./index.scss";
 const Navbar = () => {
   return (
     <ul className="navbar_ul">
       <li>
-        <a>About</a>
+        <NavLink to={"/about"}>About</NavLink>
       </li>
       <li>
-        <a>For plaers</a>
+        <NavLink to={"/forplaers"}>For plaers</NavLink>
       </li>
       <li>
-        <a>For organizer</a>
+        <NavLink to={"/organizer"}>For organizer</NavLink>
       </li>
     </ul>
   );

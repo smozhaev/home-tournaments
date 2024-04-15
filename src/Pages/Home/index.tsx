@@ -1,17 +1,17 @@
 import { useState } from "react";
 import DiceLogo from "../../assets/dice-svgrepo-com.svg";
-import "../../App.scss";
+import "./index..scss";
 
-const Home = () => {
+const HomePage = () => {
   const [count, setCount] = useState(0);
   return (
     <>
       <div>
-        <a href="https://vitejs.dev" target="_blank">
+        <a href="/about" target="_blank">
           <img src={DiceLogo} className="logo" alt="Vite logo" />
         </a>
       </div>
-      <h1>App for home tournaments</h1>
+      <h1>App for tabletop home tournaments</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
         <p>
@@ -23,4 +23,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomePage;

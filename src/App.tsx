@@ -1,11 +1,15 @@
+import Footer from "./components/Footer";
 import Header from "./components/Header";
-import Home from "./components/Home";
-
+import MainRouter from "./components/MainRouter";
+import "./App.scss";
 function App() {
   return (
     <>
       <Header />
-      <Home />
+      <section className="main">
+        <MainRouter />
+      </section>
+      <Footer />
     </>
   );
 }
