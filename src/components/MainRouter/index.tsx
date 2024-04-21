@@ -7,8 +7,8 @@ import HomePage from "../../Pages/Home";
 const MainRouter = () => {
   const basedPath: RouteObject[] = [
     { path: "/", element: <HomePage /> },
-    { path: "/about", element: <AboutPage /> },
     { path: "/forplaers", element: <ForOrginizerPage /> },
+    { path: "/about", element: <AboutPage /> },
     { path: "/organizer", element: <ForPlaersPage /> },
   ];
 

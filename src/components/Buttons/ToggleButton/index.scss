@@ -9,7 +9,7 @@
   padding: 2px;
   position: relative;
   width: 48px;
-  transition: background-color 0.4s ease;
+  transition: background-color 0.3s ease;
 
   .toggle-thumb {
     background-color: #fff; // цвет кнопки
@@ -17,8 +17,8 @@
     height: 20px;
     position: absolute;
     transition:
-      left 0.4s ease,
-      background-color 0.4s ease;
+      left 0.3s ease,
+      background-color 0.3s ease;
     width: 20px;
     left: 2px; // начальное положение слева
   }
