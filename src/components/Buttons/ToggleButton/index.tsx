@@ -1,18 +1,22 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 import "./index.scss";
 import "./types";
-import useChangeTheme from "../../../hooks/useChangeTheme.tsx";
 
-const ToggleButton = () => {
-  const [isActive, setIsActive] = useState(false);
-  const [changeTheme, setChangeTheme]: any = useChangeTheme(true);
+
+interface ToggleButtonProps {
+  changeExternalState: () => void,
+  externalState: boolean
+}
+
+const ToggleButton: FC<ToggleButtonProps> = ({ changeExternalState, externalState }: ToggleButtonProps) => {
+  const [isActive, setIsActive] = useState(externalState);
   const toggleButton = () => {
     setIsActive(!isActive);
-    setChangeTheme(!changeTheme);
+    changeExternalState();
   };
 
   return (
-    <button className={`toggle-button ${isActive ? "active" : ""}`} onClick={toggleButton}>
+    <button className={`toggle-button ${isActive ? "" : "active"}`} onClick={toggleButton}>
       <span className="toggle-thumb"></span>
     </button>
   );

@@ -1,25 +1,17 @@
 @import "./colors";
 
 html[data-theme=light] {
---background: #ffffff;
---text: #213547;
---link: #646cff;
---hover: #747bff;
---button-background: #f9f9f9;
---button-hover: #646cff;
+@include theme-colors($colors-l);
 }
 
 html[data-theme=dark] {
---background: #242424;
---text: rgba(255, 255, 255, 0.87);
---link: #646cff;
---hover: #535bf2;
---button-background: #1a1a1a;
---button-hover: #646cff;
+@include theme-colors($colors-d);
 }
 
 
 :root {
+  @include theme-colors($colors-l);
+  //color-scheme: light dark;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -32,6 +24,12 @@ html[data-theme=dark] {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+//@media (prefers-color-scheme: dark) {
+//  :root {
+//    @include theme-colors($colors-d);
+//  }
+//}
 
 #root {
   display: flex;
@@ -72,16 +70,16 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
+  color: var(--text);
   background-color: var(--button-background);
   cursor: pointer;
   transition: border-color 0.25s;
+  &:hover {
+    border-color: var(--button-hover);
+  }
+  &:focus {
+    outline-color: var(--hover);
+    box-shadow: none;
+  }
 }
 
-button:hover {
-  border-color: var(--button-hover);
-}
-
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}

@@ -1,7 +1,7 @@
 // ToggleButton.scss
 .toggle-button {
   display: flex;
-  background-color: #ccc; // неактивный цвет фона
+  background-color: #ccc;
   border: none;
   border-radius: 20px;
   cursor: pointer;
@@ -10,24 +10,31 @@
   position: relative;
   width: 48px;
   transition: background-color 0.3s ease;
+  outline: none;
+  box-shadow: none;
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
 
   .toggle-thumb {
-    background-color: #fff; // цвет кнопки
+    background-color: #fff;
     border-radius: 50%;
     height: 20px;
     position: absolute;
     transition:
-      left 0.3s ease,
-      background-color 0.3s ease;
+            left 0.3s ease,
+            background-color 0.3s ease;
     width: 20px;
-    left: 2px; // начальное положение слева
+    left: 2px;
   }
 
   &.active {
-    background-color: var(--link); // активный цвет фона
+    background-color: var(--link);
 
     .toggle-thumb {
-      left: 26px; // переместить вправо при активации
+      left: 26px;
     }
   }
 }
