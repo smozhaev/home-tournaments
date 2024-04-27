@@ -11,7 +11,9 @@
     "prettify": "prettier --write './src/**/*.{js,json,jsx,ts,tsx,css}'"
   },
   "dependencies": {
+    "axios": "^1.6.8",
     "lint-staged": "^15.2.2",
+    "pocketbase": "^0.21.2",
     "prettier": "^3.2.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

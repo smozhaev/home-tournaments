@@ -1,5 +1,9 @@
 const ForOrginizerPage = () => {
-  return <>s</>;
+  return (
+    <div>
+      <h1>Organize your own tournament</h1>
+    </div>
+  );
 };
 
 export default ForOrginizerPage;
