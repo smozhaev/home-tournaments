@@ -1,10 +1,8 @@
 import "./index.scss";
-import PocketBase from "pocketbase";
 import { useEffect, useState } from "react";
 import { Simulate } from "react-dom/test-utils";
 import error = Simulate.error;
 
-const pb = new PocketBase("http://127.0.0.1:8090");
 
 interface Tournament {
   id: number;
@@ -32,7 +30,6 @@ const Table = () => {
     fetchData().then((result) => {
       setDatas(result);
     });
-    console.log(datas);
   });
 
   return (
