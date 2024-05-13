@@ -1,0 +1,31 @@
+table {
+  width: 100%;
+  max-width: 60%;
+  border-collapse: collapse;
+  border-radius: 100px;
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  th {
+    background-color: var(--button-background);
+  }
+}
+
+.table-container {
+  display: flex;
+  justify-content: center;
+}
+
+button.join-btn {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  &:hover {
+    background-color: #45a049;
+  }
+}

@@ -1,8 +1,9 @@
 import "./index.scss";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Simulate } from "react-dom/test-utils";
 import error = Simulate.error;
-
+import { Link } from "react-router-dom";
+import { AppContext } from "../AppContext/AppContext.tsx";
 
 interface Tournament {
   id: number;
@@ -14,6 +15,7 @@ interface Tournament {
 
 const Table = () => {
   const [datas, setDatas] = useState<any>(null);
+  const { setTournamentLink } = useContext(AppContext);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -31,6 +33,10 @@ const Table = () => {
       setDatas(result);
     });
   });
+
+  const TournamentContent = (tournament: string) => {
+    setTournamentLink(tournament);
+  };
 
   return (
     <div className={"table-container"}>
@@ -54,7 +60,9 @@ const Table = () => {
                   <td>{data.location}</td>
                   <td>{data.availableSpots}</td>
                   <td>
-                    <button className="join-btn">Принять участие</button>
+                    <button onClick={TournamentContent(data.id)} className="join-btn">
+                      <Link to={"/tournament"}>Подробнее о турнире</Link>
+                    </button>
                   </td>
                 </tr>
               ))}
