@@ -1,9 +1,8 @@
 import "./index.scss";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Simulate } from "react-dom/test-utils";
 import error = Simulate.error;
 import { Link } from "react-router-dom";
-import { AppContext } from "../AppContext/AppContext.tsx";
 
 interface Tournament {
   id: number;
@@ -13,13 +12,17 @@ interface Tournament {
   availableSpots: number;
 }
 
+const LIMIT = 3;
+
 const Table = () => {
   const [datas, setDatas] = useState<any>(null);
-  const { setTournamentLink } = useContext(AppContext);
+  const [page, setPage] = useState<number>(1);
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchData = async (page: number) => {
       try {
-        const response = await fetch("http://127.0.0.1:8090/api/collections/tournaments/records");
+        const response = await fetch(
+          `http://127.0.0.1:8090/api/collections/tournaments/records?page=${page}&perPage=${LIMIT}`,
+        );
         if (!response.ok) {
           console.log("Error fetching data", error);
         }
@@ -29,14 +32,10 @@ const Table = () => {
         console.log("Error fetching data:", error);
       }
     };
-    fetchData().then((result) => {
+    fetchData(page).then((result) => {
       setDatas(result);
     });
-  });
-
-  const TournamentContent = (tournament: string) => {
-    setTournamentLink(tournament);
-  };
+  }, [page]);
 
   return (
     <div className={"table-container"}>
@@ -60,14 +59,29 @@ const Table = () => {
                   <td>{data.location}</td>
                   <td>{data.availableSpots}</td>
                   <td>
-                    <button onClick={TournamentContent(data.id)} className="join-btn">
-                      <Link to={"/tournament"}>Подробнее о турнире</Link>
-                    </button>
+                    <Link to={`/tournament/${data.id}`}>Подробнее о турнире</Link>
                   </td>
                 </tr>
               ))}
         </tbody>
       </table>
+      <div className={"pagination-buttons-container"}>
+        <button
+          onClick={() => {
+            setPage((page) => page - 1);
+          }}
+        >
+          Назад
+        </button>
+        <p className="pagination__page">{page}</p>
+        <button
+          onClick={() => {
+            setPage((page) => page + 1);
+          }}
+        >
+          Вперед
+        </button>
+      </div>
     </div>
   );
 };

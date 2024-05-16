@@ -15,7 +15,40 @@ table {
 
 .table-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+
+}
+
+.table-body {
+  display: block;
+  height: 400px; /* Высота контейнера для прокрутки */
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed; /* Фиксированная ширина таблицы */
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+tbody::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+thead, tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed; /* Фиксированная ширина таблицы */
 }
 
 button.join-btn {
@@ -28,4 +61,22 @@ button.join-btn {
   &:hover {
     background-color: #45a049;
   }
+}
+
+.pagination-buttons-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.pagination__page {
+  margin: 10px;
+}
+
+.observer {
+  height: 100px;
+  width: 100px;
+  background-color: red;
+
 }

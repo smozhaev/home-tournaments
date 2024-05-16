@@ -10,8 +10,8 @@ const MainRouter = () => {
     { path: "/", element: <HomePage /> },
     { path: "/forplaers", element: <ForPlaersPage /> },
     { path: "/about", element: <AboutPage /> },
-    { path: "/tournament", element: <TournamentInfo /> },
     { path: "/organizer", element: <ForOrginizerPage /> },
+    { path: "/tournament/:id", element: <TournamentInfo /> },
   ];
 
   const resultPath: RouteObject[] = basedPath;

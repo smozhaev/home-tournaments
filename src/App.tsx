@@ -10,7 +10,7 @@ function App() {
       <section className="main">
         <MainRouter />
       </section>
-      <Footer />
+      {/*<Footer />*/}
     </AppProvider>
   );
 }
