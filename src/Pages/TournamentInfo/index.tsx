@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import "./index.scss";
+import axios from "axios";
 import { useParams } from "react-router-dom";
 interface ITournament {
   id: string;
@@ -21,14 +22,14 @@ const TournamentInfo = () => {
   const { ref, inView } = useInView({
     threshold: 1.0,
   });
+
   const fetchTournament = async () => {
     try {
       setLoading(true);
-      const response = await fetch(
+      const { data } = await axios.get(
         `http://127.0.0.1:8090/api/collections/players/records?filter=(tournament=%27${id}%27)&page=${page}&perPage=${LIMIT}`,
       );
-      const data = await response.json();
-      setDataTournament((prev) => [...prev, ...data]);
+      setDataTournament((prev) => [...prev, ...data.items]);
     } catch (error) {
       console.log("Error fetching univer...", error);
     } finally {
@@ -41,10 +42,11 @@ const TournamentInfo = () => {
 
   useEffect(() => {
     if (inView) {
-      setPage(page + 1);
+      setPage((prev) => prev + 1);
       console.log("view");
     }
   }, [inView]);
+
   return (
     <>
       <h1>Tournament</h1>
@@ -57,12 +59,13 @@ const TournamentInfo = () => {
             </tr>
           </thead>
           <tbody className={"table-body"}>
-            {dataTournament?.items.map((tournament: ITournament) => (
+            {console.log(dataTournament)}
+            {dataTournament?.map((tournament: ITournament) => (
               <tr>
                 <td>{tournament.player_name}</td>
                 <td>{tournament.created}</td>
               </tr>
-            )) ?? <div>увыыыы</div>}
+            ))}
             {loading && <div>Загрузка...</div>}
             {!loading && <div className={"observer"} ref={ref}></div>}
           </tbody>
