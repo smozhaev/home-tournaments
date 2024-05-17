@@ -3,10 +3,12 @@ import AboutPage from "../../Pages/About";
 import ForOrginizerPage from "../../Pages/ForOrganizer";
 import ForPlaersPage from "../../Pages/ForPlaers";
 import HomePage from "../../Pages/Home";
+import AuthPage from "../../Pages/AuthPage";
 
 const MainRouter = () => {
   const basedPath: RouteObject[] = [
     { path: "/", element: <HomePage /> },
+    { path: "/auth", element: <AuthPage />},
     { path: "/forplaers", element: <ForPlaersPage /> },
     { path: "/about", element: <AboutPage /> },
     { path: "/organizer", element: <ForOrginizerPage /> },

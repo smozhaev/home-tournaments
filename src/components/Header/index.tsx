@@ -3,8 +3,12 @@ import DiceLogo from "../../assets/dice-svgrepo-com.svg";
 import Navbar from "./Navbar/index.tsx";
 import { NavLink } from "react-router-dom";
 import ThemeButton from "../Buttons/ThemeButton/index.tsx";
+import AuthButton from "../Buttons/AuthButton";
 
 const Header = () => {
+  const handleLogin = () => {
+    console.log('LoginForm clicked');
+  };
   return (
     <header className="header">
       <div className="header__title">
@@ -18,6 +22,7 @@ const Header = () => {
       <div className="header__container">
         <Navbar />
         <ThemeButton />
+        <AuthButton onClick={handleLogin} label="Login" />
       </div>
     </header>
   );

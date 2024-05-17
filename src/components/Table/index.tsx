@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { Simulate } from "react-dom/test-utils";
 import error = Simulate.error;
 
-
 interface Tournament {
   id: number;
   tournamentName: string;
