@@ -11,7 +11,10 @@
     "prettify": "prettier --write './src/**/*.{js,json,jsx,ts,tsx,css}'"
   },
   "dependencies": {
+    "@react-pdf/render": "^3.4.4",
+    "@react-pdf/renderer": "^3.4.4",
     "axios": "^1.6.8",
+    "file-saver": "^2.0.5",
     "lint-staged": "^15.2.2",
     "pocketbase": "^0.21.2",
     "prettier": "^3.2.5",
@@ -23,6 +26,7 @@
     "vite-plugin-pwa": "^0.19.8"
   },
   "devDependencies": {
+    "@types/file-saver": "^2.0.7",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
     "@typescript-eslint/eslint-plugin": "^6.21.0",

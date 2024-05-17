@@ -1,10 +1,24 @@
 import { useParams } from "react-router-dom";
 import { ITournament, TUseGetPlayersReturn } from "./type.ts";
 import useGetPlayers from "../../../hooks/useGetPlayers";
+import { MyDocument } from "../../MyDocument";
+import { saveAs } from "file-saver";
+import ReactPDF from "@react-pdf/renderer";
 
 const DynamicPagination = () => {
   const { id } = useParams();
   const [dataTournament, loading, ref]: TUseGetPlayersReturn = useGetPlayers(id);
+
+  const handleDownload = async () => {
+    try {
+      const instance = ReactPDF.pdf(<MyDocument data={dataTournament} />);
+      const buffer = await instance.toBuffer();
+      const blob = new Blob([buffer], { type: "application/pdf" });
+      saveAs(blob, "example.pdf");
+    } catch (error) {
+      console.error("Error generating or downloading PDF:", error);
+    }
+  };
 
   return (
     <div className={"table-container"}>
@@ -26,6 +40,7 @@ const DynamicPagination = () => {
           {loading && <div>Загрузка...</div>}
         </tbody>
       </table>
+      <button onClick={handleDownload}>Download PDF</button>
     </div>
   );
 };

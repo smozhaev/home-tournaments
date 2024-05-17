@@ -6,6 +6,7 @@ const TournamentInfo = () => {
     <>
       <h1>Tournament</h1>
       <DynamicPagination />
+
     </>
   );
 };
