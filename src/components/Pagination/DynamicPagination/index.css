@@ -1,16 +1,17 @@
+@charset "UTF-8";
 table {
   width: 100%;
   max-width: 60%;
   border-collapse: collapse;
   border-radius: 100px;
-  th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-  }
-  th {
-    background-color: var(--button-background);
-  }
+}
+table th, table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+table th {
+  background-color: var(--button-background);
 }
 
 .table-container {
@@ -18,7 +19,6 @@ table {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
 }
 
 .table-body {
@@ -58,16 +58,16 @@ button.join-btn {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  &:hover {
-    background-color: #45a049;
-  }
+}
+button.join-btn:hover {
+  background-color: #45a049;
 }
 
 .pagination-buttons-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
 }
 
 .pagination__page {
@@ -75,8 +75,9 @@ button.join-btn {
 }
 
 .observer {
-  height: 1px;
+  height: 100px;
   width: 100%;
   background-color: none;
-
 }
+
+/*# sourceMappingURL=index.css.map */

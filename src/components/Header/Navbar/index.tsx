@@ -7,7 +7,7 @@ const Navbar = () => {
         <NavLink to={"/about"}>About</NavLink>
       </li>
       <li>
-        <NavLink to={"/forplaers"}>For plaers</NavLink>
+        <NavLink to={"/tournaments"}>Tournaments</NavLink>
       </li>
       <li>
         <NavLink to={"/organizer"}>For organizer</NavLink>
