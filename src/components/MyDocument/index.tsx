@@ -28,12 +28,16 @@ const styles = StyleSheet.create({
   },
 });
 
-export const MyDocument = ({ data }: { data: ITournament[] }) => (
+interface IMyDocument {
+  data: ITournament[];
+}
+
+const MyDocument: React.FC<IMyDocument> = ({ data }) => (
   <Document>
     <Page size="A4">
       <View style={styles.table}>
-        {data.map((tournament, index) => (
-          <View key={index} style={styles.tableRow}>
+        {data.map((tournament) => (
+          <View style={styles.tableRow}>
             <View style={styles.tableCol}>
               <Text style={styles.tableCell}>{tournament.player_name}</Text>
             </View>
@@ -46,3 +50,5 @@ export const MyDocument = ({ data }: { data: ITournament[] }) => (
     </Page>
   </Document>
 );
+
+export default MyDocument;
