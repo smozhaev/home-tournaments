@@ -1,16 +1,18 @@
-import { useParams } from "react-router-dom";
-import { ITournamentPlaers, TUseGetPlayersReturn } from "./type.ts";
-import useGetPlayers from "../../../hooks/useGetPlayers";
+import { TableData, TRef } from "./type.ts";
 import { useContext, useEffect } from "react";
 import { AppContext } from "../../AppContext/AppContext.tsx";
 
-const DynamicPagination = () => {
-  const { id } = useParams();
-  const [dataTournament, loading, ref]: TUseGetPlayersReturn = useGetPlayers(id);
-  const { setTournamentDataForPDF } = useContext(AppContext);
+interface IDynamicPagination {
+  dataTournament: TableData[];
+  loading: boolean;
+  ref: TRef;
+}
 
+const DynamicPagination: React.FC<IDynamicPagination> = ({ dataTournament, loading, ref }) => {
+  const { setTournamentDataForPDF, setLoadingPDF } = useContext(AppContext);
   useEffect(() => {
     setTournamentDataForPDF(dataTournament);
+    setLoadingPDF(loading);
   }, [dataTournament]);
 
   return (
@@ -23,7 +25,7 @@ const DynamicPagination = () => {
           </tr>
         </thead>
         <tbody className={"table-body"}>
-          {dataTournament?.map((tournament: ITournamentPlaers) => (
+          {dataTournament?.map((tournament: TableData) => (
             <tr>
               <td>{tournament.player_name}</td>
               <td>{tournament.created}</td>

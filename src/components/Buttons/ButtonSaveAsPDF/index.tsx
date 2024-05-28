@@ -5,11 +5,11 @@ import { AppContext } from "../../AppContext/AppContext.tsx";
 import "./index.scss";
 
 const ButtonSaveAsPDF: React.FC = () => {
-  const { tournamentDataForPDF } = useContext(AppContext);
+  const { tournamentDataForPDF, loadingPDF } = useContext(AppContext);
   return (
     <button className={"button-pdf"}>
       <PDFDownloadLink document={<MyDocument data={tournamentDataForPDF} />} fileName="somename.pdf">
-        {({ blob, url, loading, error }) => (loading ? "Loading document..." : "Download now!")}
+        {() => (!loadingPDF ? "Loading doc..." : "Download now!")}
       </PDFDownloadLink>
     </button>
   );

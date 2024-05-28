@@ -23,7 +23,7 @@ table th {
 
 .table-body {
   display: block;
-  height: 400px; /* Высота контейнера для прокрутки */
+  height: 416px; /* Высота контейнера для прокрутки */
   overflow-y: auto;
   overflow-x: hidden;
 }
