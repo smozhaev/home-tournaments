@@ -1,25 +1,17 @@
 import { useParams } from "react-router-dom";
-import { ITournament, TUseGetPlayersReturn } from "./type.ts";
+import { ITournamentPlaers, TUseGetPlayersReturn } from "./type.ts";
 import useGetPlayers from "../../../hooks/useGetPlayers";
-import { saveAs } from "file-saver";
-import ReactPDF, { PDFDownloadLink } from "@react-pdf/renderer";
-import MyDocument from "../../MyDocument";
+import { useContext, useEffect } from "react";
+import { AppContext } from "../../AppContext/AppContext.tsx";
 
 const DynamicPagination = () => {
   const { id } = useParams();
   const [dataTournament, loading, ref]: TUseGetPlayersReturn = useGetPlayers(id);
+  const { setTournamentDataForPDF } = useContext(AppContext);
 
-  const handleDownload = async () => {
-    try {
-      const instance = ReactPDF.pdf(<MyDocument data={dataTournament} />);
-      const buffer = await instance.toBuffer();
-      const blob = new Blob([buffer], { type: "application/pdf" });
-      console.log(4, blob);
-      saveAs(blob, "example.pdf");
-    } catch (error) {
-      console.error("Error generating or downloading PDF:", error);
-    }
-  };
+  useEffect(() => {
+    setTournamentDataForPDF(dataTournament);
+  }, [dataTournament]);
 
   return (
     <div className={"table-container"}>
@@ -31,21 +23,20 @@ const DynamicPagination = () => {
           </tr>
         </thead>
         <tbody className={"table-body"}>
-          {dataTournament?.map((tournament: ITournament) => (
+          {dataTournament?.map((tournament: ITournamentPlaers) => (
             <tr>
               <td>{tournament.player_name}</td>
               <td>{tournament.created}</td>
             </tr>
           ))}
           {!loading && <div className={"observer"} ref={ref}></div>}
-          {loading && <div>Загрузка...</div>}
+          {loading && (
+            <div className={"loader"}>
+              <div className={"loader-animation"}></div>
+            </div>
+          )}
         </tbody>
       </table>
-      <button>
-        <PDFDownloadLink document={<MyDocument data={dataTournament} />} fileName="somename.pdf">
-        {({ blob, url, loading, error }) => (loading ? 'Loading document...' : 'Download now!')}
-        </PDFDownloadLink>
-      </button>
     </div>
   );
 };

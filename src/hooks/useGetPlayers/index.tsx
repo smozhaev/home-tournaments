@@ -10,10 +10,12 @@ const useGetPLayers = (id: any): TGetPlayers => {
   const [dataTournament, setDataTournament] = useState<ITournament[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const { ref, inView } = useInView({
-    threshold: 1.0,
+    threshold: 0.05,
   });
 
   const fetchTournament = async () => {
+    const startTime = Date.now();
+    const MIN_EXECUTION_TIME = 3000;
     try {
       setLoading(true);
       const { data } = await axios.get(
@@ -23,9 +25,17 @@ const useGetPLayers = (id: any): TGetPlayers => {
     } catch (error) {
       console.log("Error fetching univer...", error);
     } finally {
+      const endTime = Date.now();
+      const elapsedTime = endTime - startTime;
+
+      if (elapsedTime < MIN_EXECUTION_TIME) {
+        await new Promise((resolve) => setTimeout(resolve, MIN_EXECUTION_TIME - elapsedTime));
+      }
+
       setLoading(false);
     }
   };
+
   useEffect(() => {
     void fetchTournament();
   }, [page]);
@@ -33,7 +43,6 @@ const useGetPLayers = (id: any): TGetPlayers => {
   useEffect(() => {
     if (inView) {
       setPage((prev) => prev + 1);
-      console.log("view");
     }
   }, [inView]);
 

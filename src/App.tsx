@@ -1,4 +1,3 @@
-import Footer from "./components/Footer";
 import Header from "./components/Header";
 import MainRouter from "./components/MainRouter";
 import "./App.scss";

@@ -72,6 +72,7 @@ button {
   font-weight: 500;
   font-family: inherit;
   color: var(--text);
+  max-width: 200px;
   background-color: var(--button-background);
   cursor: pointer;
   transition: border-color 0.25s;

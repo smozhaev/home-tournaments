@@ -5,4 +5,3 @@ export interface ITournamentDataForPDF {
   created: string;
   updated: string;
 }
-export type TMyDocument = ITournamentDataForPDF[];

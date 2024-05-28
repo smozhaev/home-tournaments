@@ -3,6 +3,7 @@ table {
   max-width: 60%;
   border-collapse: collapse;
   border-radius: 100px;
+  //border: solid var(--text) 1px ;
   th, td {
     border: 1px solid #ddd;
     padding: 8px;
@@ -51,17 +52,7 @@ thead, tbody tr {
   table-layout: fixed; /* Фиксированная ширина таблицы */
 }
 
-button.join-btn {
-  padding: 10px 20px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  &:hover {
-    background-color: #45a049;
-  }
-}
+
 
 .pagination-buttons-container {
     display: flex;
@@ -75,8 +66,41 @@ button.join-btn {
 }
 
 .observer {
-  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  background-color: none;
+  height: 1px;
 
+}
+
+.loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 50px;
+}
+
+/* HTML: <div class="loader"></div> */
+.loader-animation {
+  width: 15px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  clip-path: inset(-45px);
+  box-shadow: -60px 15px,-60px 15px,-60px 15px;
+  transform: translateY(-15px);
+  animation: l19 1s infinite linear;
+  color: var(--button-hover);
+}
+
+@keyframes l19{
+  16.67% {box-shadow:-60px 15px,-60px 15px,19px 15px}
+  33.33% {box-shadow:-60px 15px,  0px 15px,19px 15px}
+  40%,60%{box-shadow:-19px 15px,  0px 15px,19px 15px}
+  66.67% {box-shadow:-19px 15px,  0px 15px,60px 15px}
+  83.33% {box-shadow:-19px 15px, 60px 15px,60px 15px}
+  100%   {box-shadow: 60px 15px, 60px 15px,60px 15px}
 }

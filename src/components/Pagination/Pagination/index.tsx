@@ -19,7 +19,8 @@ const Table = () => {
           </tr>
         </thead>
         <tbody>
-          {datas?.map((data: ITournament) => (
+          {
+            datas?.map((data: ITournament) => (
             <tr>
               <td>{data.tournamentName}</td>
               <td>{data.game}</td>

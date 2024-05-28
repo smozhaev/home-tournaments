@@ -1,6 +1,5 @@
-// MyDocument.tsx
 import { Page, Text, View, Document, StyleSheet } from "@react-pdf/renderer";
-import { ITournament } from "./type.ts";
+import { ITournamentDataForPDF } from "./type.ts";
 
 const styles = StyleSheet.create({
   table: {
@@ -29,7 +28,7 @@ const styles = StyleSheet.create({
 });
 
 interface IMyDocument {
-  data: ITournament[];
+  data: ITournamentDataForPDF[];
 }
 
 const MyDocument: React.FC<IMyDocument> = ({ data }) => (
