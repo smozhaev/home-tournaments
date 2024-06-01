@@ -19,8 +19,7 @@ const Table = () => {
           </tr>
         </thead>
         <tbody>
-          {
-            datas?.map((data: ITournament) => (
+          {datas?.map((data: ITournament) => (
             <tr>
               <td>{data.tournamentName}</td>
               <td>{data.game}</td>
@@ -30,7 +29,7 @@ const Table = () => {
                 <Link to={`/tournaments/${data.id}`}>Подробнее о турнире</Link>
               </td>
             </tr>
-          )) ?? console.log("error")}
+          )) ?? "error"}
         </tbody>
       </table>
       <div className={"pagination-buttons-container"}>
