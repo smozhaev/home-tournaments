@@ -1,25 +1,24 @@
 import { useParams } from "react-router-dom";
 import { ITournament, TUseGetPlayersReturn } from "./type.ts";
 import useGetPlayers from "../../../hooks/useGetPlayers";
-import { saveAs } from "file-saver";
-import ReactPDF, { PDFDownloadLink } from "@react-pdf/renderer";
+import { PDFDownloadLink } from "@react-pdf/renderer";
 import MyDocument from "../../MyDocument";
 
 const DynamicPagination = () => {
   const { id } = useParams();
   const [dataTournament, loading, ref]: TUseGetPlayersReturn = useGetPlayers(id);
 
-  const handleDownload = async () => {
-    try {
-      const instance = ReactPDF.pdf(<MyDocument data={dataTournament} />);
-      const buffer = await instance.toBuffer();
-      const blob = new Blob([buffer], { type: "application/pdf" });
-      console.log(4, blob);
-      saveAs(blob, "example.pdf");
-    } catch (error) {
-      console.error("Error generating or downloading PDF:", error);
-    }
-  };
+  // const handleDownload = async () => {
+  //   try {
+  //     const instance = ReactPDF.pdf(<MyDocument data={dataTournament} />);
+  //     const buffer = await instance.toBuffer();
+  //     const blob = new Blob([buffer], { type: "application/pdf" });
+  //     console.log(4, blob);
+  //     saveAs(blob, "example.pdf");
+  //   } catch (error) {
+  //     console.error("Error generating or downloading PDF:", error);
+  //   }
+  // };
 
   return (
     <div className={"table-container"}>
@@ -43,7 +42,7 @@ const DynamicPagination = () => {
       </table>
       <button>
         <PDFDownloadLink document={<MyDocument data={dataTournament} />} fileName="somename.pdf">
-        {({ blob, url, loading, error }) => (loading ? 'Loading document...' : 'Download now!')}
+          {({ loading }) => (loading ? "Loading document..." : "Download now!")}
         </PDFDownloadLink>
       </button>
     </div>

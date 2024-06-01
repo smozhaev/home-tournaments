@@ -1,4 +1,4 @@
-name: Add Text to PR Description
+ name: Add Text to PR Description
 
 on:
   pull_request:
